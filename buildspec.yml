@@ -1,18 +1,26 @@
+version: 0.2
+
 phases:
   install:
     runtime-versions:
-      nodejs: 16
-  pre-build:
+      nodejs: 16 # 确保版本正确
     commands:
-      - echo pre build
+      - echo "Installing dependencies..."
+
+  pre_build:
+    commands:
+      - echo "Running pre-build steps..."
+
   build:
     commands:
-      - npm install
+      - npm install # 比 `npm install` 更严格，适合 CI/CD
       - npm run build
+
   post_build:
     commands:
-      - echo build complete on `date`
-      - ls -l ./dist/shop/
+      - echo "Build completed on `date`"
+      - ls -la ./dist/ # 确保路径正确
+
 artifacts:
   files:
-    - dist/shop/*
+    - dist/shop/* # 打包所有文件（或指定 `dist/**`）
