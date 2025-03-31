@@ -24,3 +24,4 @@ phases:
 artifacts:
   files:
     - dist/shop/* # 打包所有文件（或指定 `dist/**`）
+    - dist/shop/assets/*
